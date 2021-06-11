@@ -1,0 +1,51 @@
+.unselectable {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+#input-text-area {
+	/* Position */
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0%;
+	top: 0;
+	margin: 0;
+	padding-top: 8vh;
+
+	/* No visible border */
+	border: none;
+	resize: none;
+	outline: none;
+
+	/* Background + image */
+	background-color: transparent;
+	background-image: url(img.png);
+	background-repeat: no-repeat;
+	background-position: 50%;
+
+	/* Text styling */
+	text-align: center;
+	font-size: 4vw;
+}
+
+#buttons-span {
+	/* Position */
+	position: absolute;
+	top: 0%;
+	left: 50%;
+	transform: translate(-50%, 0%);
+	margin: 0;
+
+	/* Text styling */
+	text-align: center;
+	font-size: 5vh;
+}
+
+#clipboard-copy {
+	cursor: copy;
+}
