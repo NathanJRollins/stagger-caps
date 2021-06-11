@@ -10,9 +10,17 @@ var percentageOfTimeToNotStagger = 0.2;
 
 // Input changed.  Convert and replace it.
 function newInput() {
-	var input = document.getElementById('input-text-area').value;
-	var inputConverted = translate(input);
-	document.getElementById('input-text-area').value = inputConverted;
+	var textArea = document.getElementById('input-text-area');
+
+	// Save user's current text cursor location.
+	var oldCursorLocation = textArea.selectionEnd;
+
+	// Convert user's input text's capitalization.
+	textArea.value = translate(textArea.value);
+
+	// Set user's typing location back to where it was.
+	//   Otherwise it'll be at the end of the text after each keystroke, because we replace all of it.
+	textArea.selectionEnd = oldCursorLocation;
 }
 
 //  Stagger caps, every other, with a small degree of randomness allowing case upset
