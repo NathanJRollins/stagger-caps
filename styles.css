@@ -2,6 +2,11 @@ body {
 	overflow: hidden;
 }
 
+::selection {
+	/* Text selection color (May not work outside Firefox) */
+	background: #FFF101;
+}
+
 .unselectable {
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
