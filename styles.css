@@ -1,3 +1,7 @@
+body {
+	overflow: hidden;
+}
+
 .unselectable {
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
