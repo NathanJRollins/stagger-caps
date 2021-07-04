@@ -21,6 +21,11 @@ function newInput() {
 	// Set user's typing location back to where it was.
 	//   Otherwise it'll be at the end of the text after each keystroke, because we replace all of it.
 	textArea.selectionEnd = oldCursorLocation;
+
+	// Rotate the background image a bit,(but set it back to 0 rotation if the textarea is cleared)
+	document.getElementById('background-image').style.transform = "translate(-50%, -50%) rotate(" + ((Math.random()*20)-10).toString() + "deg)";
+	if (textArea.value == "")
+		document.getElementById('background-image').style.transform = "translate(-50%, -50%)";
 }
 
 //  Stagger caps, every other, with a small degree of randomness allowing case upset
@@ -37,7 +42,7 @@ function translate(inputString) {
 		var currentChar = inputString[i];
 
 		// If char isn't a caps-able letter, append it unaltered and leave the history trackers alone.
-		if( currentChar.toUpperCase() == currentChar.toLowerCase() )
+		if (currentChar.toUpperCase() == currentChar.toLowerCase())
 		outputString += currentChar;
 
 		// If previous 2 chars are both caps, add this one as lowercase.
