@@ -1,5 +1,6 @@
 body {
 	overflow: hidden;
+	background-color: darkturquoise;
 }
 
 ::selection {
@@ -35,7 +36,21 @@ body {
 	/* Text styling */
 	text-align: center;
 	font-size: 4vw;
+	font-family: 'Slackey', cursive;
+	color: #FFF101;
+	text-shadow: 4px 4px #6c2601;
+	/* Dark-olive shadow variants: */
+	/* text-shadow: 4px 4px rgb(168, 172, 6); */
+	/* text-shadow: 4px 4px rgb(107, 120, 51); */
+	/* text-shadow: 4px 4px rgb(143, 159, 73); */
+}
+#input-text-area::selection {
+	/* Selected text's color */
 	color: #6c2601;
+	text-shadow: 4px 4px rgb(107, 120, 51);
+}
+#input-text-area::placeholder {
+	opacity: 100%;
 }
 
 #background-image {
