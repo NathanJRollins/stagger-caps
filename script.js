@@ -28,6 +28,7 @@ function newInput() {
 		document.getElementById('background-image').style.transform = "translate(-50%, -50%)";
 }
 
+
 //  Stagger caps, every other, with a small degree of randomness allowing case upset
 //    if the last two letters aren't the same capitalization already.
 function translate(inputString) {
@@ -86,6 +87,7 @@ function translate(inputString) {
 } // end translate()
 
 
+
 // Load clipboard copy sound effect.
 var scribbleAudioElement = document.createElement('audio');
 scribbleAudioElement.setAttribute('src', 'audio/scribble-clip.mp3');
@@ -124,3 +126,31 @@ function reRandomizeStagger(e) {
 }
 // Listen for clicks on rerandomization button.
 document.getElementById("rerandomize").addEventListener("click", reRandomizeStagger);
+
+
+
+// Shrink and grow the font size so it fits on screen (unless font gets way too small, in which case we'll still scroll).
+(function() {
+  const textarea = document.getElementById('input-text-area');
+  const minFontSizePxFlat = 10;   // 10px minimum
+  const maxFontSizeAsPercentOfViewportWidth = 0.04;  // 4vw max
+
+  textarea.addEventListener('input', function() {
+    let currentFontSizePx = parseFloat(window.getComputedStyle(textarea).fontSize);
+
+    // Shrink font size if there's enough text to overflow.
+    while (textarea.scrollHeight > textarea.clientHeight && currentFontSizePx > minFontSizePxFlat)
+        textarea.style.fontSize = (currentFontSizePx -= 1) + 'px';
+
+    // Grow font size if we've space.
+    while (textarea.scrollHeight <= textarea.clientHeight && 
+	   currentFontSizePx < (window.innerWidth * maxFontSizeAsPercentOfViewportWidth)) {
+      textarea.style.fontSize = (currentFontSizePx += 1) + 'px';
+      // If we overflow after incrementing, revert the last increment
+      if (textarea.scrollHeight > textarea.clientHeight) {
+        textarea.style.fontSize = (currentFontSizePx -= 1) + 'px';
+        break;
+      }
+    }
+  });
+})();
